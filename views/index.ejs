@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TransactChain</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>TransactChain</h1>
+    <p style="margin-top:6px;">Cross-border payment tracker .</p>
+  </header>
+
+  <main class="page">
+    <div class="card">
+      <% if (user) { %>
+        <p>Welcome, <strong><%= user.username %></strong> — <%= user.role %></p>
+        <nav>
+          <a href="/dashboard">Dashboard</a>
+          <% if (user.role !== 'admin') { %> <a href="/transfer">Transfer</a> <% } %>
+          <% if (user.role === 'bank') { %> <a href="/bank/accounts">View Customers</a> <% } %>
+          <% if (user.role === 'admin') { %> <a href="/admin/transactions">All Transactions</a> | <a href="/admin/accounts">All Accounts</a> <% } %>
+          <a href="/logout">Logout</a>
+        </nav>
+      <% } else { %>
+        <p><a href="/register">Register</a> | <a href="/login">Login</a></p>
+      <% } %>
+
+      <section style="margin-top:12px;">
+        <h3>About</h3>
+        <p>
+  🌐 Experience fast, secure, and borderless money transfers with CrossTransactChain.<br>
+  🔒 Every account and transaction is protected with advanced digital security.<br>
+  💱 Cross-border fees are calculated automatically — no hidden charges, ever.<br>
+  📊 Enjoy real-time transparency and stay in control of every transaction.<br>
+  💪 Empowering global banking — simple, trusted, and built for everyone.
+</p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

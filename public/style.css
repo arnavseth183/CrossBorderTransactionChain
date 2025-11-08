@@ -1,0 +1,167 @@
+/* ====== Global Page Setup ====== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: url("/image1.png") no-repeat center center fixed;
+  background-size: cover;
+  animation: backgroundChange 12s infinite alternate ease-in-out;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* ====== Background Animation ====== */
+@keyframes backgroundChange {
+  0% {
+    background-image: url("/image1.png");
+  }
+  50% {
+    background-image: url("/image2.png");
+  }
+  100% {
+    background-image: url("/image1.png");
+  }
+}
+
+/* ====== Header ====== */
+header {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* ====== Main Content ====== */
+main.page {
+  width: 90%;
+  max-width: 1000px;
+  margin-top: 40px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  flex-grow: 1;
+}
+
+/* ====== Deleted/Empty Area Handling ====== */
+section.deleted, .empty-area {
+  width: 100%;
+  min-height: 200px;
+  background: transparent;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  text-align: center;
+}
+
+/* ====== Tables ====== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #fff;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: left;
+}
+
+th {
+  background-color: rgba(255, 255, 255, 0.2);
+  font-weight: bold;
+}
+
+/* ====== Buttons ====== */
+button, .btn {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  background-color: #0056b3;
+}
+
+/* ====== Cards ====== */
+.card {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* ====== Forms ====== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Increased input box size for better visibility */
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  padding: 14px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 17px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+input[type="submit"]:hover {
+  background-color: #218838;
+}
+
+/* ====== Footer ====== */
+footer {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  padding: 15px 0;
+  color: #ccc;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.4);
+  position: relative;
+  bottom: 0;
+}
+
+footer a {
+  color: #00c6ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+

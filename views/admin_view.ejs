@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Admin - Transactions</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    /* small tweaks for admin view specific UI */
+    .pow { font-size:12px; color:#4b5b72; margin-top:8px; }
+  </style>
+</head>
+<body>
+  <header><h1>Admin: All Transactions</h1></header>
+
+  <main class="page">
+    <div class="card">
+      <% if (transactions.length === 0) { %>
+        <p>No transactions found.</p>
+      <% } else { %>
+
+        <!-- Blockchain-like visualization -->
+        <div class="blockchain" aria-hidden="true">
+          <% transactions.forEach((t, idx) => { %>
+            <div class="block">
+              <div class="title">Block <%= idx + 1 %></div>
+              <div class="small">TX: <%= t.id.slice(0,14) %>...</div>
+              <div class="small">From: <%= t.fromEmail %></div>
+              <div class="small">To: <%= t.toEmail %></div>
+              <div class="small">Amt: <%= t.amount %> (Fee: <%= (t.fee !== undefined) ? t.fee : 0 %>)</div>
+              <div style="margin-top:8px;">
+                <span class="hash"><%= ('h' + (t.id + t.timestamp)).slice(0,20) %></span>
+                <div class="pow">Proof-of-work (simulated)</div>
+              </div>
+            </div>
+            <% if (idx !== transactions.length - 1) { %>
+              <div class="chain-connector" aria-hidden="true"></div>
+            <% } %>
+          <% }) %>
+        </div>
+
+        <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th><th>From</th><th>To</th><th>Amount</th><th>Fee</th><th>Cross-Border</th><th>Time</th><th>Note</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% transactions.forEach(t => { %>
+              <tr>
+                <td><%= t.id %></td>
+                <td><%= t.fromEmail %> (<%= t.fromCountry || "-" %>)<br/><small><code class="code"><%= t.fromAddress %></code></small></td>
+                <td><%= t.toEmail %> (<%= t.toCountry || "-" %>)<br/><small><code class="code"><%= t.toAddress %></code></small></td>
+                <td><%= t.amount %></td>
+                <td><%= (t.fee !== undefined) ? t.fee : 0 %></td>
+                <td><%= t.crossBorder ? "Yes" : "No" %></td>
+                <td><%= new Date(t.timestamp).toLocaleString() %></td>
+                <td><%= t.note || "-" %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        </div>
+
+      <% } %>
+
+      <p style="margin-top:12px;"><a href="/dashboard">Back</a> | <a href="/admin/accounts">View All Accounts</a></p>
+    </div>
+  </main>
+</body>
+</html>

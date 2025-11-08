@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Create Account</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header><h1>Create Account</h1></header>
+
+  <main class="page">
+    <div class="card">
+      <% if (error) { %><p class="error"><%= error %></p><% } %>
+      <form method="POST" action="/register">
+        <label>Username</label>
+        <input name="username" required>
+
+        <label>Email</label>
+        <input name="email" type="email" required>
+
+        <label>Password</label>
+        <input name="password" type="password" required>
+
+        <label>Role</label>
+        <select name="role" required>
+          <option value="customer">Customer</option>
+          <option value="bank">Bank</option>
+          <option value="admin">Admin</option>
+        </select>
+
+        <label>Country</label>
+        <select name="country" required>
+          <option value="">Select your country</option>
+          <option>India</option>
+          <option>USA</option>
+          <option>UK</option>
+          <option>Germany</option>
+          <option>Japan</option>
+          <option>Australia</option>
+          <option>Canada</option>
+          <option>UAE</option>
+          <option>Singapore</option>
+          <option>France</option>
+        </select>
+
+        <label>Spare sentence / note (will be shown when you delete your account)</label>
+        <input name="spareSentence" maxlength="250" placeholder="E.g., 'Please contact me at X before deletion'">
+
+        <label>Secret message (required to delete your account later)</label>
+        <input name="deleteSecret" type="password" maxlength="100" placeholder="Set a secret that you'll use to confirm deletion">
+
+        <button type="submit">Create Account</button>
+      </form>
+
+      <p style="margin-top:10px;"><a href="/">Back</a></p>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>Dashboard</h1>
+  </header>
+
+  <main class="page">
+    <div class="card">
+      <p><strong><%= user.username %></strong> — <%= user.role %></p>
+      <p>Address: <code class="code"><%= user.address %></code></p>
+
+      <!-- ✅ Hide balance for admin -->
+      <% if (user.username !== 'admin') { %>
+        <p>Balance: <strong><%= user.balance %></strong> tokens</p>
+      <% } %>
+
+      <% if (user.role === 'bank') { %>
+        <p><a href="/bank/accounts">View Customers</a></p>
+      <% } %>
+
+      <nav>
+        <% if (user.role !== 'admin') { %>
+          <a href="/transfer">Make Transfer</a> |
+        <% } %>
+        <a href="/">Home</a> |
+        <a href="/logout">Logout</a>
+        <% if (user.role === 'admin') { %> 
+          | <a href="/admin/transactions">All Transactions</a> 
+          | <a href="/admin/accounts">All Accounts</a> 
+        <% } %>
+      </nav>
+
+      <p style="margin-top:12px;">
+        <a href="/account/delete">Delete my account</a>
+      </p>
+
+      <h3 style="margin-top:18px;">Your Recent Transactions</h3>
+      <% if (transactions.length === 0) { %>
+        <p>No transactions yet.</p>
+      <% } else { %>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Amount</th>
+                <th>Fee</th>
+                <th>Cross-Border</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% transactions.forEach(tx => { %>
+                <tr>
+                  <td><%= tx.id %></td>
+                  <td>
+                    <%= tx.fromEmail %> (<%= tx.fromAddress.slice(0,8) %>...)<br/>
+                    <small><%= tx.fromCountry || "-" %></small>
+                  </td>
+                  <td>
+                    <%= tx.toEmail %> (<%= tx.toAddress.slice(0,8) %>...)<br/>
+                    <small><%= tx.toCountry || "-" %></small>
+                  </td>
+                  <td><%= tx.amount %></td>
+                  <td><%= (tx.fee !== undefined) ? tx.fee : 0 %></td>
+                  <td><%= tx.crossBorder ? "Yes" : "No" %></td>
+                  <td><%= new Date(tx.timestamp).toLocaleString() %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      <% } %>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 CrossTransactChain — All Rights Reserved</p>
+  </footer>
+</body>
+</html>

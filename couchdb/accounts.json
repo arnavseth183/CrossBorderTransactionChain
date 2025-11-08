@@ -1,0 +1,15 @@
+[
+  {
+    "id": "77fa2f69-9247-493e-a20a-e45d6ff46f37",
+    "username": "admin",
+    "email": "admin@adm",
+    "password": "admin",
+    "role": "admin",
+    "country": "Japan",
+    "address": "0x6532191ec2b0455aa52b828a16f9bc5e",
+    "balance": 0,
+    "spareSentence": "Please Contact me Later",
+    "deleteSecret": "admin",
+    "createdAt": "2025-11-08T04:31:03.947Z"
+  }
+]

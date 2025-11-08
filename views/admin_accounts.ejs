@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Admin - All Accounts</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header><h1>Admin: Registered Accounts</h1></header>
+
+  <main class="page">
+    <div class="card">
+      <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th><th>Username</th><th>Email</th><th>Role</th><th>Country</th><th>Balance</th><th>Spare Note</th><th>Created</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% accounts.forEach(acc => { %>
+            <tr>
+              <td><%= acc.id %></td>
+              <td><%= acc.username %></td>
+              <td><%= acc.email %></td>
+              <td><%= acc.role %></td>
+              <td><%= acc.country %></td>
+              <td><%= acc.balance %></td>
+              <td><%= acc.spareSentence ? acc.spareSentence : '-' %></td>
+              <td><%= new Date(acc.createdAt).toLocaleString() %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      </div>
+
+      <p style="margin-top:12px;"><a href="/dashboard">Back</a></p>
+    </div>
+  </main>
+</body>
+</html>
